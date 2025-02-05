@@ -1,0 +1,160 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: white;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f2e9;
+    /* color: #3e2723; */
+  }
+  
+  header {
+    background-color: #3e2723;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    /* background-color: #efebe9; */
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 50px;
+    background-color: #FFF5E9;
+  }
+  
+  .hero-image {
+    width: 300px;
+    height: 200px;
+    height: auto;
+    border-radius: 8px;
+    background-color: white;
+    margin-right: 200px;
+    margin-left: 30px;
+  }
+  
+  .menu {
+    padding: 4rem 2rem;
+    /* background-color: #d7ccc8; */
+  }
+  
+  .menu-slider {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  
+  .menu-item {
+    text-align: center;
+    max-width: 200px;
+    border: 2px solid black;
+    /* padding: 80px; */
+    border-radius: 8px;
+    color: #795548;
+
+
+  }
+  .menu :hover{
+    transform: translateY(-10px);
+  }
+  .menu-item p{
+    margin-bottom: 20px;
+  }
+  
+  .menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    height: 150px;
+    margin-bottom: 50px;
+  }
+  
+  .about {
+    padding: 4rem 2rem;
+    background-color: #efdcc3;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    color: rgba(48, 18, 1, 0.603);
+  }
+  
+  .about-text {
+    max-width: 50%;
+  }
+  
+  .about-image {
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+    margin-left: 150px;
+  }
+  
+  .contact {
+    padding: 4rem 2rem;
+    background-color: #795548;
+    color: white;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-top: 1rem;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #3e2723;
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #5d4037;
+  }
+  
+  footer {
+    background-color: #3e2723;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrewHub Finance System</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            
+        }
+
+        h1 {
+            font-family: cursive;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            padding: 15px;
+            border: 2px solid #333;
+            cursor: pointer;
+            text-align: center;
+            width: 120px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+        }
+
+        .gold-card { background-color: gold; }
+        .silver-card { background-color: silver; }
+        .regular-card { background-color: #c0c0c0; }
+
+        .selected-card {
+            border: 1px solid rgb(15, 13, 13);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(115, 114, 114, 0.3);
+            
+        }
+
+        .option-container {
+           
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        .result-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .container{
+            font-family: monospace;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Crafted to love, Brewed with perfection, and served with passion!</h1>
+    <div class="container" >
+    <div class="card-container">
+        <div class="card gold-card" id="goldCard" onclick="selectedCustomerType('gold')">Gold Member</div>
+        <div class="card silver-card" id="silverCard" onclick="selectedCustomerType('silver')">Silver Member</div>
+        <div class="card regular-card" id="regularCard" onclick="selectedCustomerType('regular')">Regular Member</div>
+    </div>
+    <div class="option-container">
+        <label for="coffeeType">Coffee Type:</label>
+        <select id="coffeeType">
+            <option value="latte">Latte</option>
+            <option value="pistashio">Pistashio</option>
+            <option value="mocha">Mocha</option>
+        </select> <br><br>
+
+        <label for="coffeeSize">Coffee Size:</label>
+        <select id="coffeeSize">
+            <option value="small">Small ($2)</option>
+            <option value="medium">Medium ($3)</option>
+            <option value="large">Large ($4)</option>
+        </select>
+        <br><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <br><br>
+        <label>Add-Ons:</label><br>
+        <input type="checkbox" value="0.5"> Whipped Cream ($0.5) <br>
+        <input type="checkbox" value="1"> Extra Shot ($1) <br>
+        <input type="checkbox" value="0.75"> Syrup ($0.75) <br>
+        <br>
+        <label for="promoCode">Promo Code:</label>
+        <input type="text" id="promoCode" placeholder="Enter Promo Code">
+        <br><br>
+        <button onclick="calculateTotal()">Calculate Total</button>
+    </div>
+    <div class="result-container" id="result">
+        <h2>Order Summary</h2>
+        <p id="summaryCoffeeType"></p>
+        <p id="summaryCoffee"></p>
+        <p id="summaryQuantity"></p>
+        <p id="summaryAddons"></p>
+        <p>Subtotal: $<span id="subtotal"></span></p>
+        <p>Discount: $<span id="discount"></span></p>
+        <p>Tax (5%): $<span id="tax"></span></p>
+        <p>Total: $<span id="total"></span></p>
+        <button onclick="window.print()">Print</button>
+    </div>
+</div>
+    <script>
+        function selectedCustomerType(type) {
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('selected-card'));
+            document.getElementById(type + 'Card').classList.add('selected-card');
+            document.body.dataset.customerType = type;
+        }
+
+        function calculateTotal() {
+            let sizePrices = { small: 2, medium: 3, large: 4 };
+            let coffeeSize = document.getElementById("coffeeSize").value;
+            let coffeeType = document.getElementById("coffeeType").value;
+            let quantity = parseInt(document.getElementById("quantity").value);
+            let basePrice = sizePrices[coffeeSize] * quantity;
+
+            let addonPrice = 0;
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(addon => {
+                addonPrice += parseFloat(addon.value);
+            });
+
+            let subtotal = basePrice + addonPrice;
+            let discount = 0;
+            if (document.body.dataset.customerType === 'gold') discount = subtotal * 0.2;
+            if (document.body.dataset.customerType === 'silver') discount = subtotal * 0.1;
+            if (document.getElementById("promoCode").value === "BREWHUB10") discount += 2;
+
+            let tax = (subtotal - discount) * 0.05;
+            let total = (subtotal - discount) + tax;
+
+            document.getElementById("summaryCoffeeType").innerText = `Type: ${coffeeType}`;
+            document.getElementById("summaryCoffee").innerText = `Size: ${coffeeSize}`;
+            document.getElementById("summaryQuantity").innerText = `Quantity: ${quantity}`;
+            document.getElementById("summaryAddons").innerText = `Add-ons: $${addonPrice.toFixed(2)}`;
+            document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+            document.getElementById("discount").innerText = discount.toFixed(2);
+            document.getElementById("tax").innerText = tax.toFixed(2);
+            document.getElementById("total").innerText = total.toFixed(2);
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>

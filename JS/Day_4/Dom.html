@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <h1>Dom in JS</h1>
+    <p id="demo"></p>
+    <ul id="list"></ul>
+
+    <script>
+        
+        const list = document.getElementById("list");
+
+        let fruits = ["Apple", "Banana", "Mango", "Orange", "Pineapple"];
+
+        fruits.map((fruit, index) =>{
+            let li = document.createElement("li");
+            li.innerHTML = `<h3>${index + 1}. ${fruit}</h3>`;
+            console.log(li);
+            list.appendChild(li);
+        })
+    </script>
+</body>
+</html>

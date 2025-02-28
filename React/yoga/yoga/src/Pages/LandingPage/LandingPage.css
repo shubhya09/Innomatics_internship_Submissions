@@ -1,0 +1,84 @@
+.landing-page{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    display: flex;
+    
+}
+.hero-section {
+    height: 100vh;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1tGkT6pREg-iZSt3nhdzpekmqM4Wv19zZlg&s');
+    background-size: cover; /* Ensures full coverage */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    width: 100%;
+    position: relative; /* Avoid absolute unless necessary */
+    z-index: 1;
+}
+
+
+.hero-section::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+    
+}
+
+.hero-content{
+    max-width: 600px;
+    
+}
+
+
+.hero-content h1{
+    font-size: 3rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.hero-content p{
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero-content button{
+    padding: 10px 20px;
+    background: #dce838;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+/* About Section */
+
+.about-section{
+    background: #f4f4f4;
+    padding: 50px 20x;
+    text-align: center;
+    width: 10%;
+    
+}
+
+.about-section h2{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.about-section p{
+    font-size: 1.2rem;
+    margin: 0 auto;
+    max-width: 800px;
+    color: #333;
+    line-height: 1.6;
+
+}

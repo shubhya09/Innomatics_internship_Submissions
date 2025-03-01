@@ -1,0 +1,98 @@
+.imageGallery_heading {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.viewSwitcher {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.viewSwitcher button {
+    padding: 10px 15px;
+    margin: 0 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    transition: 0.3s ease-in-out;
+}
+
+.viewSwitcher button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* GRID VIEW */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gridItem {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gridItem:hover {
+    transform: scale(1.05);
+}
+
+.gridImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* LIST VIEW */
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.listImage {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.imageDetails {
+    flex-grow: 1;
+}
+
+.imageDetails h3 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.imageDetails p {
+    margin: 3px 0;
+    color: #555;
+    font-size: 0.9rem;
+}

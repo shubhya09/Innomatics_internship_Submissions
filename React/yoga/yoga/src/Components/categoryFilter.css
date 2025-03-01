@@ -1,0 +1,28 @@
+.selectData{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+
+}
+
+.selectData select{
+    width: 200px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.selectData select:focus{
+    outline: none;
+    border-color: #6a0dad;
+    background-color: #fff;
+
+}
+
+.selectData select:hover{
+    border-color: #6a0dad;
+}

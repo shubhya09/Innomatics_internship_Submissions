@@ -36,7 +36,7 @@ const Login = () => {
                 value={credentials.email}
                 onChange={handleChange}
               />
-            </div>
+            </div> 
 
             <div className="form-group">
               <label htmlFor="password">Password</label>

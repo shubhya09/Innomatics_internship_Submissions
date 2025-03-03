@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Gallery.css';
 import CategoryFilter from '../../Components/categoryFilter';
 import images from '../../Data/imageData';
+import { useNavigate } from 'react-router-dom'
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [view, setView] = useState('grid'); // Toggle between grid and list view
 
-  // Correct filtering logic
+    const navigate = useNavigate();
+
+  useEffect(() =>{
+    const storedData = JSON.parse(localStorage.getItem('user'));
+    if(!storedData){
+      navigate('/login')
+    }
+  })
+   
   const filteredImages = selectedCategory === 'All'
     ? images
     : images.filter((img) => img.category === selectedCategory);

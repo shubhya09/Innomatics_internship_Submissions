@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './SignUp.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: '',
     email: '',
@@ -17,7 +20,13 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Data:", user);
+    // console.log("User Data:", user);
+    if(!user.username || !user.email || !user.password){
+      alert('Please fill in all details');
+      return;
+    }
+    localStorage.setItem('user', JSON.stringify(user))
+    navigate('/login')
     // You can add API call here for user registration
   };
 

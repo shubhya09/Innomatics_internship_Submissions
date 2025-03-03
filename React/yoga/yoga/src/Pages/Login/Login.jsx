@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
+
+  const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({
     email: '',
     password: ''
   });
 
   const handleChange = (e) => {
-    setCredentials({
-      ...credentials,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login Data:", credentials);
-    // You can add API call here for user authentication
+    const storedData = JSON.parse(localStorage.getItem('user'))
+    if(!storedData){
+      alert("Sign-Up First")
+    }
+    if(userData.email===storedData.email && userData.password===storedData.password){
+      navigate('/yoga-poses')
+    }else{
+      alert('wrong credentials')
+    }
   };
 
   return (
@@ -33,7 +44,7 @@ const Login = () => {
                 name="email" 
                 id="email" 
                 placeholder="Enter your email" 
-                value={credentials.email}
+                value={userData.email}
                 onChange={handleChange}
               />
             </div> 
@@ -45,7 +56,7 @@ const Login = () => {
                 name="password" 
                 id="password" 
                 placeholder="Enter your password" 
-                value={credentials.password}
+                value={userData.password}
                 onChange={handleChange}
               />
             </div>

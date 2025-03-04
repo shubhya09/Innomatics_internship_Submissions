@@ -1,0 +1,33 @@
+.about-container{
+    color: white;
+    width: 70%;
+    margin-top: -590px;
+    margin-left: 350px;
+    
+}
+.about-container h3{
+    text-align: start;
+    color: #FFDB70;
+}
+
+.about2-container{
+    border: 1px solid rgb(142, 141, 141);
+    display: flex;
+    gap: 50px;
+    justify-content: space-around;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.about2-container .left-side img{
+    height: 300px;
+    padding: 10px;
+    border-radius: 1000px;
+}
+
+.about2-container .right-side{
+    /* margin-top: 50px; */
+    border: 1px solid white;
+    padding: 30px;
+    border-radius: 10px;
+}

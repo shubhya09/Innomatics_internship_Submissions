@@ -1,0 +1,23 @@
+.navbar{
+    width: 100%;
+    /* color: rgb(255, 255, 255); */
+    background-color: rgba(49, 48, 48, 0.425);
+    /* position: sticky; */
+}
+
+.linka{
+    color: white;
+    font-size: 13px;
+    padding: 19px;
+    margin-left: 20px;
+    
+}
+
+.linka:hover{
+    color: #FFDB70;
+}
+
+.navbar1{
+    display: flex;
+    gap: 500px;
+}

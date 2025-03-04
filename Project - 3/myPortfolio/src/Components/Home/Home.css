@@ -1,0 +1,43 @@
+
+.card-containerr{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 50px;
+    /* background-color: black; */
+   margin-left: 100px;
+    margin-top: -500px;
+}
+
+h1{
+    color: white;
+    font-family: monospace;
+    font-weight: 800;
+    text-align: center;
+}
+
+.h11{
+    color: blueviolet;
+}
+
+.card2{
+    width: 20%;
+    border: 2px solid black;
+    border-radius: 10px;
+    /* padding: 20px; */
+}
+
+.card2 h5{
+    text-align: center;
+    padding: 10px;
+}
+
+.card2 img{
+    /* padding: -10px; */
+    border-radius: 10px;
+    height: 200px;
+}
+
+.card-body{
+    padding: 20px;
+}

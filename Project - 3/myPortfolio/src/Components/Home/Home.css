@@ -1,43 +1,68 @@
-
-.card-containerr{
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    margin-top: 50px;
-    /* background-color: black; */
-   margin-left: 100px;
-    margin-top: -500px;
+/* Remove underline for all anchor tags inside .project-item */
+.project-item a {
+  text-decoration: none;
 }
 
-h1{
-    color: white;
-    font-family: monospace;
-    font-weight: 800;
-    text-align: center;
+/* Ensure that project-title and project-category have no underline */
+.project-title,
+.project-category {
+  text-decoration: none;
 }
 
-.h11{
-    color: blueviolet;
+.portfolio {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: -550px;
+  margin-left: 350px;
 }
 
-.card2{
-    width: 20%;
-    border: 2px solid black;
-    border-radius: 10px;
-    /* padding: 20px; */
+.h2.article-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
 }
 
-.card2 h5{
-    text-align: center;
-    padding: 10px;
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
 }
 
-.card2 img{
-    /* padding: -10px; */
-    border-radius: 10px;
-    height: 200px;
+.project-item {
+  padding: 5px;
+  transition: transform 0.3s ease;
 }
 
-.card-body{
-    padding: 20px;
+.project-item:hover {
+  transform: scale(1.05);
+}
+
+.project-img img {
+  width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.project-title {
+  font-size: 1rem;
+  margin-top: 10px;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.project-category {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+h3 {
+  text-decoration: none;
+}
+
+p {
+  text-decoration: none;
 }

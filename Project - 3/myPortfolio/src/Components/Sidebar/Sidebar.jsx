@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 
 const Sidebar = () => {
@@ -48,7 +49,7 @@ const Sidebar = () => {
               <div className="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
               <div className="contact-info">
                 <p className="contact-title">Birthday</p>
-                <time dateTime="2003-03-22">22 March, 2003</time>
+                <time dateTime="2003-03-22" className="contact-link">22 March, 2003</time>
               </div>
             </li>
 
@@ -56,18 +57,30 @@ const Sidebar = () => {
               <div className="icon-box"><ion-icon name="location-outline"></ion-icon></div>
               <div className="contact-info">
                 <p className="contact-title">Location</p>
-                <address>Pune, India</address>
+                <address className="contact-link">Pune, India</address>
               </div>
             </li>
           </ul>
 
           <div className="separator"></div>
 
-          <ul className="social-list">
-            {/* <li className="social-item"><a href="#" className="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li> */}
-            {/* <FontAwesomeIcon icon="fa-brands fa-facebook" /> */}
-            <li className="social-item"><a href="#" className="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
-            <li className="social-item"><a href="#" className="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <ul className="social-icons">
+            
+            <li>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <FaFacebook size={20} /> 
+          </a>
+        </li>
+        <li>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <FaTwitter size={20} /> 
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <FaInstagram size={20} /> 
+          </a>
+        </li>
           </ul>
         </div>
       )}

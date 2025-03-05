@@ -1,0 +1,98 @@
+/* Blog.css */
+
+/* .blog {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 10px;
+  } */
+
+  .blog {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: -550px;
+    margin-left: 400px;
+  }
+  
+  .h2.article-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .blog-post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Increased the min width */
+    gap: 30px; /* Increased gap between items */
+    list-style: none;
+    padding: 0;
+    
+  }
+  
+  .blog-post-item {
+   
+    border-radius: 10px; /* Rounded corners */
+    /* padding: 20px; Increased padding */
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #141313;
+  }
+  
+  .blog-post-item:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+  }
+  
+  .blog-post-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .blog-post-title {
+    font-size: 1.2rem; /* Increased title size */
+    margin-top: 15px;
+    text-decoration: none;
+    color: aliceblue;
+    text-align: left;
+  }
+  
+  .blog-post-category {
+    color: #afaaaa;
+    font-size: 1rem; /* Increased font size for category */
+    text-align: left;
+  }
+  
+
+  
+  .p-tag h3,
+  p {
+    text-decoration: none;
+    
+
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* Additional Styling */
+  .blog-post-item a:hover .blog-post-title {
+    color: #f39c12; /* Change text color on hover */
+  }
+  
+  .blog-post-item {
+    margin-bottom: 30px; /* Add space below each blog item */
+  }
+  
+  .p-tag{
+    color: #ccc7c7;
+    margin-left: 10px;
+    margin-bottom: -9px;
+  }
+
+  .b-img{
+    padding: 20px;
+  }

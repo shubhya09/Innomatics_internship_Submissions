@@ -29,21 +29,8 @@ const Navbar = () => {
                   <Link to="/blog" className="nav-link linka">Blog</Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <Link
-                    to="#"
-                    className="nav-link dropdown-toggle linka"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Dropdown
-                  </Link>
-                  <ul className="dropdown-menu">
-                    <li><Link to="#" className="dropdown-item">Action</Link></li>
-                    <li><Link to="#" className="dropdown-item">Another action</Link></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><Link to="#" className="dropdown-item">Something else here</Link></li>
-                  </ul>
+                  
+                  
                 </li>
                 <li className="nav-item">
                   <Link to="/contact" className="nav-link linka">Contact</Link>

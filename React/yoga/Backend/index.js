@@ -1,6 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const ImageRoutes = require('./routes/imageRoutes')
+const cors = require('cors')
+app.use(cors());
+
 const port = process.env.PORT;
 require("./config/db")
 const app = express();

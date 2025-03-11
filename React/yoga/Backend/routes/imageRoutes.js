@@ -11,5 +11,6 @@ const router = express.Router();
 
 // Route to add an image
 router.post('/add-image', imageController.createImage);
+router.get('/get-image', imageController.getImage);
 
 module.exports = router;

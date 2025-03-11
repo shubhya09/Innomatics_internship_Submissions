@@ -11,5 +11,18 @@ const createImage = async (req, res) => {
     }
 };
 
-module.exports = { createImage };
+const getImage = async (req, res) => {
+    try {
+        
+        const imageData = await Image.find();
+        res.json(imageData)
+        // console.log(imageData)
+
+    } catch (e) {
+        console.error(e);
+        
+    }
+};  
+
+module.exports = { createImage, getImage };
 

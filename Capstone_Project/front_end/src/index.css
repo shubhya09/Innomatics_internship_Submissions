@@ -1,24 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-
-*{
-    font-family: Outfit;
+* {
+    font-family: 'Outfit', sans-serif;
 }
 
-.active hr{
-    @apply block
+/* Show the <hr> inside elements with class "active" */
+.active hr {
+    display: block;
 }
 
-::-webkit-scrollbar{
-    @apply hidden
+/* Hide the scrollbar */
+::-webkit-scrollbar {
+    display: none;
 }
 
-@media (max-width:740px){
-
-    .active p{
-        @apply text-white bg-primary
+/* Media query for screens smaller than 740px */
+@media (max-width: 740px) {
+    .active p {
+        color: white;
+        background-color: #3490dc; /* Replace with your Tailwind primary color */
     }
 }

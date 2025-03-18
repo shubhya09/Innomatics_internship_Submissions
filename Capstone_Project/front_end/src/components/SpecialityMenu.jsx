@@ -1,10 +1,11 @@
-
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 import { specialityData } from '../assets/assets';
 import { Link } from 'react-router-dom';
 
 const SpecialityMenu = () => {
+  const [hoverIndex, setHoverIndex] = useState(-1);
+
   return (
     <div style={styles.container} id="speciality1">
       <h1 style={styles.heading}>Find by Speciality</h1>
@@ -18,10 +19,16 @@ const SpecialityMenu = () => {
             key={index}
             to={`/doctors/${item.speciality}`}
             onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
-            style={styles.specialityItem}
+            style={{
+              ...styles.specialityItem,
+              transform: hoverIndex === index ? 'translateY(-10px)' : 'translateY(0)',
+            }}
+            onMouseEnter={() => setHoverIndex(index)}
+            onMouseLeave={() => setHoverIndex(-1)}
           >
-            <img src={item.image} alt={item.speciality} style={styles.image} />
-            <p style={styles.specialityText}>{item.speciality}</p>
+            <div style={styles.circle}>
+              <p style={styles.specialityText}>{item.speciality}</p>
+            </div>
           </Link>
         ))}
       </div>
@@ -54,9 +61,9 @@ const styles = {
     gap: '16px',
     paddingTop: '20px',
     width: '100%',
-    overflowX: 'auto', // Enables horizontal scrolling on small screens
+    overflowX: 'auto',
     whiteSpace: 'nowrap',
-    scrollbarWidth: 'none', // Hide scrollbar for modern browsers
+    scrollbarWidth: 'none',
   },
   specialityItem: {
     display: 'flex',
@@ -64,22 +71,25 @@ const styles = {
     alignItems: 'center',
     textDecoration: 'none',
     color: 'inherit',
-    fontSize: '12px',
     cursor: 'pointer',
-    flexShrink: 0,
     transition: 'transform 0.3s ease',
   },
-  specialityItemHover: {
-    transform: 'translateY(-10px)',
-  },
-  image: {
-    width: '64px',
-    maxWidth: '96px',
+  circle: {
+    backgroundColor: '#b3d4fc', // Light blue color
+    borderRadius: '50%',
+    width: '150px',
+    height: '100px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: '8px',
   },
   specialityText: {
     fontSize: '14px',
-    fontWeight: '500',
+    fontWeight: '700',
+    color: '#2D3748',
+    textAlign: 'center',
+    margin: 0,
   },
 };
 

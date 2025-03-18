@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
@@ -9,9 +8,8 @@ const Doctors = () => {
   const { tdoctors } = useContext(AppContext);
 
   const [filteredDoctors, setFilteredDoctors] = useState([]);
-  const [showFilter, setShowFilter] = useState(false);
 
-  // Filter doctors based on speciality
+  // Filter doctors based on the selected speciality
   useEffect(() => {
     if (tdoctors) {
       const filtered = speciality
@@ -32,40 +30,29 @@ const Doctors = () => {
 
   return (
     <div style={styles.container}>
-      <p style={styles.headerText}>Browse through the doctors by speciality.</p>
+      {/* Specialities Sidebar */}
+      <div style={styles.sidebar}>
+        <h2 style={styles.sidebarTitle}>Specialities</h2>
+        {specialities.map((spec) => (
+          <p
+            key={spec}
+            onClick={() =>
+              speciality === spec ? navigate('/doctors') : navigate(`/doctors/${spec}`)
+            }
+            style={{
+              ...styles.specialityItem,
+              backgroundColor: speciality === spec ? '#E0E7FF' : 'white',
+            }}
+          >
+            {spec}
+          </p>
+        ))}
+      </div>
 
-      <div style={styles.flexContainer}>
-        {/* Toggle Filter Button (for Mobile) */}
-        <button
-          style={{
-            ...styles.filterButton,
-            backgroundColor: showFilter ? '#4F46E5' : 'white',
-            color: showFilter ? 'white' : 'black',
-          }}
-          onClick={() => setShowFilter((prev) => !prev)}
-        >
-          Filter
-        </button>
-
-        {/* Filter Options */}
-        <div style={{ ...styles.filterOptions, display: showFilter ? 'flex' : 'none' }}>
-          {specialities.map((spec) => (
-            <p
-              key={spec}
-              onClick={() => (speciality === spec ? navigate('/doctors') : navigate(`/doctors/${spec}`))}
-              style={{
-                ...styles.filterItem,
-                backgroundColor: speciality === spec ? '#E0E7FF' : 'white',
-              }}
-            >
-              {spec}
-            </p>
-          ))}
-        </div>
-
-        {/* Doctor List */}
-        <div style={styles.gridContainer}>
-          {filteredDoctors.map((doctor) => (
+      {/* Doctors Display */}
+      <div style={styles.doctorList}>
+        {filteredDoctors.length > 0 ? (
+          filteredDoctors.map((doctor) => (
             <div
               key={doctor._id}
               onClick={() => doctor._id && navigate(`/appointment/${doctor._id}`)}
@@ -77,64 +64,59 @@ const Doctors = () => {
                 alt={doctor.name || 'Doctor'}
               />
               <div style={styles.cardContent}>
-                <div style={styles.availability}>
-                  <p style={styles.statusIndicator}></p>
-                  <p>Available</p>
-                </div>
                 <p style={styles.name}>{doctor.name}</p>
                 <p style={styles.speciality}>{doctor.speciality}</p>
+                <p style={styles.availability}>
+                  <span style={styles.statusIndicator}></span> Available
+                </p>
               </div>
             </div>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p style={styles.noDoctors}>No doctors available for this speciality.</p>
+        )}
       </div>
     </div>
   );
 };
 
-// Embedded CSS Styles
+// CSS Styles
 const styles = {
   container: {
-    padding: '24px 16px',
+    display: 'flex',
+    padding: '24px',
+    gap: '24px',
   },
-  headerText: {
-    color: '#4B5563',
-  },
-  flexContainer: {
+  sidebar: {
+    width: '220px',
+    padding: '16px',
+    borderRight: '2px solid #E5E7EB',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'start',
-    gap: '20px',
-    marginTop: '20px',
+    gap: '12px',
+    backgroundColor: '#F9FAFB',
+    minHeight: '100vh', // Ensures it takes full height
   },
-  filterButton: {
-    padding: '6px 12px',
-    border: '1px solid black',
+  sidebarTitle: {
+    marginBottom: '12px',
+    fontSize: '18px',
+    fontWeight: '600',
+    color: '#4B5563',
+  },
+  specialityItem: {
+    padding: '8px 12px',
     borderRadius: '6px',
-    fontSize: '14px',
-    transition: 'all 0.3s ease',
     cursor: 'pointer',
-    display: 'block',
-  },
-  filterOptions: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    fontSize: '14px',
     color: '#4B5563',
-  },
-  filterItem: {
-    width: '94vw',
-    maxWidth: '200px',
-    padding: '8px 16px',
+    fontSize: '14px',
+    transition: 'background-color 0.3s ease',
     border: '1px solid #D1D5DB',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    marginBottom: '8px',
+    textAlign: 'center',
   },
-  gridContainer: {
+  doctorList: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
     gap: '16px',
     width: '100%',
   },
@@ -143,38 +125,52 @@ const styles = {
     borderRadius: '12px',
     overflow: 'hidden',
     cursor: 'pointer',
-    transition: 'transform 0.3s ease-in-out',
+    transition: 'transform 0.3s ease',
+    backgroundColor: 'white',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    padding: '10px',
+    textAlign: 'center',
   },
   image: {
-    backgroundColor: '#DBEAFE',
     width: '100%',
-    height: '180px',
+    height: '160px',
     objectFit: 'cover',
+    backgroundColor: '#DBEAFE',
+    marginBottom: '10px',
   },
   cardContent: {
-    padding: '16px',
+    padding: '10px',
+  },
+  name: {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: '4px',
+  },
+  speciality: {
+    fontSize: '14px',
+    color: '#4B5563',
+    marginBottom: '8px',
   },
   availability: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
-    fontSize: '14px',
+    justifyContent: 'center',
     color: '#10B981',
+    fontSize: '14px',
   },
   statusIndicator: {
     width: '8px',
     height: '8px',
     backgroundColor: '#10B981',
     borderRadius: '50%',
+    marginRight: '6px',
   },
-  name: {
-    color: '#111827',
-    fontSize: '18px',
-    fontWeight: '500',
-  },
-  speciality: {
-    color: '#4B5563',
-    fontSize: '14px',
+  noDoctors: {
+    color: '#9CA3AF',
+    fontSize: '16px',
+    marginTop: '20px',
+    textAlign: 'center',
   },
 };
 

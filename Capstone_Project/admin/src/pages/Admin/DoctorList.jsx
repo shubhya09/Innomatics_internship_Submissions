@@ -1,38 +1,113 @@
-import { useContext, useEffect } from 'react'
-import { AdminContext } from '../../context/AdminContext'
+import { useContext, useEffect } from 'react';
+import { AdminContext } from '../../context/AdminContext';
 
 const DoctorList = () => {
+  const { doctors, aToken, getAllDoctors, changeAvailability } = useContext(AdminContext);
 
-    const {doctors, aToken, getAllDoctors, changeAvailability} = useContext(AdminContext)
-
-    useEffect(()=>{
-      if(aToken){
-        getAllDoctors()
-      }
-    }, [aToken])
+  useEffect(() => {
+    if (aToken) {
+      getAllDoctors();
+    }
+  }, [aToken]);
 
   return (
-    <div className='m-5 mx-h-[90vh] overflow-y-scroll'>
-        <h1 className='text-lg font-medium'>All Doctors</h1>
-        <div className='w-full flex flex-wrap gap-4 pt-5 gap-y-6'>
-          {
-            doctors.map((item, index)=>(
-              <div className='border border-indigo-200 rounded-xl max-w-56 overflow-hidden cursor-pointer group ' key={index}>
-                <img className='bg-indigo-50 group-hover:bg-primary transition-all duration-500 mb-10 ' src={item.image} alt=''/>
-                <div className='p-4'>
-                  <p className='text-neutral-800 text-lg font-medium '>{item.name}</p>
-                  <p className='text-neutral-600 text-sm'>{item.speciality}</p>
-                  <div className='mt-2 flex items-center gap-1 text-sm'>
-                    <input onChange={(()=> changeAvailability(item._id))} type="checkbox" checked={item.available} />
-                    <p>Available</p>
-                  </div>
-                </div>
+    <div className="doctor-list">
+      <h1>All Doctors</h1>
+      <div className="doctor-container">
+        {doctors.map((item, index) => (
+          <div className="doctor-card" key={index}>
+            <img className="doctor-image" src={item.image} alt="" />
+            <div className="doctor-details">
+              <p className="doctor-name">{item.name}</p>
+              <p className="doctor-speciality">{item.speciality}</p>
+              <div className="availability">
+                <input
+                  type="checkbox"
+                  checked={item.available}
+                  onChange={() => changeAvailability(item._id)}
+                />
+                <p>Available</p>
               </div>
-            ))
-          }
-        </div>
-    </div>
-  )
-}
+            </div>
+          </div>
+        ))}
+      </div>
 
-export default DoctorList
+      {/* CSS Styles */}
+      <style jsx="true">{`
+        .doctor-list {
+          margin: 20px;
+          max-height: 90vh;
+          max-width: 9 00px ;
+          margin-left: 500px;
+          margin-top: -750px;
+          overflow-y: scroll;
+        }
+
+        .doctor-list h1 {
+          font-size: 18px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+
+        .doctor-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding-top: 20px;
+        }
+
+        .doctor-card {
+          border: 1px solid #c3c3f5;
+          border-radius: 10px;
+          max-width: 200px;
+          overflow: hidden;
+          cursor: pointer;
+          transition: transform 0.3s;
+        }
+
+        .doctor-card:hover {
+          transform: scale(1.05);
+        }
+
+        .doctor-image {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          background-color: #f0f0ff;
+          margin-bottom: 10px;
+          transition: background-color 0.3s;
+        }
+
+        .doctor-details {
+          padding: 10px;
+        }
+
+        .doctor-name {
+          font-size: 16px;
+          font-weight: 500;
+          color: #333;
+        }
+
+        .doctor-speciality {
+          font-size: 14px;
+          color: #666;
+          margin-top: 5px;
+        }
+
+        .availability {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          gap: 5px;
+        }
+
+        .availability input {
+          cursor: pointer;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default DoctorList;
